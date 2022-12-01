@@ -1,15 +1,3 @@
-#  TODO LATER
-#  https://stackoverflow.com/questions/11604653/how-to-add-command-line-arguments-with-flags-in-python3
-
-## create two runnings modes
-# run the server.py
-# run locally (with local GUI)
-
-# example command
-# python3 main.py --mode gui --server false
-# python3 main.py --mode cli --server true
-
-from data.DataHandler import StarData
 from pynput.keyboard import Key, Listener
 import paho.mqtt.client as mqtt
 import time 
@@ -49,14 +37,6 @@ if __name__ == '__main__':
 
     while True: 
         if calibrated == True:  
-            # coords = input("Enter coordinates: ")
-            mySky = StarData()
-            star = mySky.find_star(attribute = "hd", value = "12929")
-
-            sky_coordinates = star.get_sky_coordinates()
-            print(f"Location of Star {star.data['hd']}: Altitude: {sky_coordinates.alt.degree:,.3}, Azimuth: {sky_coordinates.az.degree:,.3}")
-
-            coords = f"{sky_coordinates.az.degree:,.3}, {sky_coordinates.alt.degree:,.3}"
-            print(coords)
+            coords = input("Enter coordinates: ")
             if coords != '':
                 client.publish("starryStarry/coordinates", coords)

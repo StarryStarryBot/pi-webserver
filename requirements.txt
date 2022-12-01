@@ -1,0 +1,13 @@
+astropy==5.1.1
+numpy==1.23.5
+packaging==21.3
+paho-mqtt==1.6.1
+pyerfa==2.0.0.1
+pynput==1.7.6
+pyobjc-core==9.0
+pyobjc-framework-ApplicationServices==9.0
+pyobjc-framework-Cocoa==9.0
+pyobjc-framework-Quartz==9.0
+pyparsing==3.0.9
+PyYAML==6.0
+six==1.16.0
