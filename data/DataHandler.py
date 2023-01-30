@@ -39,6 +39,7 @@ class Star:
     def get_sky_coordinates(self):
         self.update_location()
         
+        // fix datetime now
         current_time = Time(datetime.now())
         return self.sky_coordinates.transform_to(AltAz(obstime = current_time, location = self.user_location))
 
