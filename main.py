@@ -56,7 +56,7 @@ if __name__ == '__main__':
             sky_coordinates = star.get_sky_coordinates()
             print(f"Location of Star {star.data['hd']}: Altitude: {sky_coordinates.alt.degree:,.3}, Azimuth: {sky_coordinates.az.degree:,.3}")
 
-            coords = f"{sky_coordinates.az.degree:,.3}, {sky_coordinates.alt.degree:,.3}"
+            coords = f"{abs(sky_coordinates.az.degree):,.3}, {abs(sky_coordinates.alt.degree):,.3}"
             print(coords)
             if coords != '':
                 client.publish("starryStarry/coordinates", coords)

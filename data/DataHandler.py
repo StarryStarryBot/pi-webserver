@@ -7,12 +7,17 @@ from astropy import units as u
 from astropy.time import Time
 from astropy.coordinates import SkyCoord, EarthLocation, AltAz
 
+from helpers.QuadTree import Index
+
 class StarData:
     def __init__(self):
+        # list of all star objects
         self.db = None
-        self.load_db()
+        # quadtree of starobjects
+        self.star_locations = None
+        self.load_data()
         
-    def load_db(self):
+    def load_data(self):
         path = Path(__file__).parent / "star-data.csv"
         with open(path, newline='') as reader:
             self.db = [{k: v for k, v in row.items()} for row in csv.DictReader(reader, skipinitialspace=True)]
@@ -30,7 +35,7 @@ class Star:
         self.db = None
         self.data = data
 
-        self.sky_coordinates = SkyCoord(ra = float(self.data["ra"]) * u.degree, dec = float(self.data["dec"]) * u.degree) 
+        self.sky_coordinates = SkyCoord(ra = float(self.data["ra"]) * u.hours, dec = float(self.data["dec"]) * u.degree) 
     
     def update_location(self):
         # location of USC
