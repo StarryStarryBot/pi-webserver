@@ -11,4 +11,4 @@ pyobjc-framework-Quartz==9.0
 pyparsing==3.0.9
 PyYAML==6.0
 six==1.16.0
-flask_cors=3.0.10
+flask_cors==3.0.10
