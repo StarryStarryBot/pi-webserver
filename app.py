@@ -10,9 +10,30 @@ CORS(app) # allow cross origin reference
 #global database var
 StarDatabase = StarData()
 
-@app.route("/<path:path>")
+@app.route("/")
 def home():
-    return send_from_directory('static', path)
+    return 
+    
+# Servlet takes a star id, calculates coordinates and then invokes control software to send command to RPi 
+@app.route("/pointToStar", methods=['GET'])
+def pointToStar():
+    name = request.args.get('name')
+
+    #acquire star coordinates
+    global StarDatabase
+    star = StarDatabase.find_star(attribute = "hd", value = "12929")
+
+    sky_coordinates = star.get_sky_coordinates()
+    coords = f"{sky_coordinates.az.degree:,.3}, {sky_coordinates.alt.degree:,.3}"
+
+    #invoke control software with coordinates
+    #
+    print("Pointing to:", coords)
+
+    return ('', 204) #code 204: request successed but no content nor redirect
+    
+    
+    
 
 @app.route("/getStarInfo", methods=['GET']) #?name=Polaris
 def getStar():
