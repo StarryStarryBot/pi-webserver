@@ -1,4 +1,5 @@
 from data.DataHandler import StarData
+import time
 
 mySky = StarData()
 star = mySky.find_star(attribute = "hd", value = "12929")
