@@ -32,14 +32,11 @@ def pointToStar():
 
     return ('', 204) #code 204: request successed but no content nor redirect
     
-    
-    
-
 @app.route("/getStarInfo", methods=['GET']) #?name=Polaris
 def getStar():
-    name = request.args.get('name')
+    name = request.args.get('id')
     global StarDatabase
-    star = StarDatabase.find_star(attribute = "hd", value = "12929")
+    star = StarDatabase.find_star(attribute = "hd", value = name)
 
     sky_coordinates = star.get_sky_coordinates()
     coords = f"{sky_coordinates.az.degree:,.3}, {sky_coordinates.alt.degree:,.3}"
