@@ -25,6 +25,13 @@ def getStar():
 
     return json.dumps(coords) #send json
 
+@app.route("/getNearbyStars", methods=['GET']) #?name=Polaris
+def getNearbyStars():
+    global StarDatabase
+    nearby_stars = StarDatabase.find_closest_stars(2, 30)
+
+    return json.dumps(nearby_stars) #send json
+
 if __name__ == '__main__' : 
     app.run(debug=True, port=8888)
     
