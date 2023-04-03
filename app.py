@@ -2,8 +2,10 @@ import os
 from flask import Flask, render_template, request, redirect, session, send_from_directory, jsonify
 from data.DataHandler import StarData
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app) # allow cross origin reference 
 
 #global database var
 StarDatabase = StarData()
