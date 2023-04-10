@@ -17,11 +17,9 @@ def home():
 # Servlet takes a star id, calculates coordinates and then invokes control software to send command to RPi 
 @app.route("/pointToStar", methods=['GET'])
 def pointToStar():
-    name = request.args.get('name')
-
-    #acquire star coordinates
+    name = request.args.get('id')
     global StarDatabase
-    star = StarDatabase.find_star(attribute = "hd", value = "12929")
+    star = StarDatabase.find_star(attribute = "hd", value = name)
 
     sky_coordinates = star.get_sky_coordinates()
     coords = f"{sky_coordinates.az.degree:,.3}, {sky_coordinates.alt.degree:,.3}"
